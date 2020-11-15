@@ -1,28 +1,74 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Step 1:</h1>
+    <code v-html="stepOneRange" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data: function() {
+    return {
+      dummySecuence: [...Array(20).keys()]
+    }
+  },
+  computed: {
+    stepOneRange(){
+      let result = this.dummySecuence.map((element) => {
+        let item = element + 1; 
+        
+        let isMultipleOfThree = item % 3 == 0;
+        let isMultipleOfFive = item % 5 == 0;
+        let isMultipleOfFifteen = item % 15 == 0;
+
+        if(isMultipleOfFifteen){
+          return "fizzbuzz";
+        }
+        else if(isMultipleOfFive){
+          return "buzz";
+        }
+        else if(isMultipleOfThree){
+          return "fizz";
+        } else {
+          return item;
+        }
+      });
+
+      return result.join(' ');
+    }
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
+body {
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  padding: 30px 15px;
+  background-color: #2e3038;
+  color: #d2d2d2;
+}
+
+h1 {
+  color: #c79f42;
+  font-size: 23px;
+  font-weight: 200;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+  letter-spacing: 6px;
+  text-shadow: 2px 2px 2px rgb(0 0 0 / 50%);
+}
+
+code {
+  padding: 1rem 2rem;
+  background: #393c46;
+  border-radius: 5px;
+  margin: 1rem 0 3rem;
 }
 </style>
