@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Step 1:</h1>
-    <code v-html="stepOneRange" />
+    <code v-html="stepOneRange(dummySecuence)" />
   </div>
 </template>
 
@@ -14,9 +14,9 @@ export default {
       dummySecuence: [...Array(20).keys()]
     }
   },
-  computed: {
-    stepOneRange(){
-      let result = this.dummySecuence.map((element) => {
+  methods: {
+    stepOneRange(secuence){
+      let result = secuence.map((element) => {
         let item = element + 1; 
         
         let isMultipleOfThree = item % 3 == 0;

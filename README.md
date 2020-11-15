@@ -14,3 +14,8 @@ yarn serve
 ```
 yarn build
 ```
+
+### Running unit tests
+```
+npm run test:unit
+```
