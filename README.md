@@ -1,4 +1,4 @@
-# p001
+# FizzBuzz:01
 
 ## Project setup
 ```
